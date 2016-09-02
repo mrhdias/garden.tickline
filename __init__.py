@@ -764,7 +764,7 @@ class Tickline(StencilView):
     def _update_tolerances(self, *args):
         self.scale_tolerances = sorted(
                                [(tick.scale_factor * tick.min_space, tick) 
-                                for tick in self.ticks])
+                                for tick in self.ticks], , key=lambda x: x[0])
     
     def _update_effect_constants(self, *args):
         if not self.scroll_effect:
