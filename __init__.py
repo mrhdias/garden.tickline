@@ -611,7 +611,9 @@ class Tickline(StencilView):
         self.labeller = self.labeller_cls(self, **self.labeller_args)
         
     def on_scroll_effect_cls(self, *args):
-        effect = self.scroll_effect = self.scroll_effect_cls(round_value=False)
+        self.scroll_effect = self.scroll_effect_cls()
+        self.scroll_effect.round_value = False
+        effect = self.scroll_effect
         self._update_effect_constants()
         self._trigger_calibrate()
         effect.bind(scroll=self._update_from_scroll)
